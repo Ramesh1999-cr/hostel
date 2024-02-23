@@ -1,9 +1,9 @@
 from django.db import models
-from  django.contrib.auth.models import User,AbstractUser
+from  django.contrib.auth.models import User,AbstractUser,PermissionsMixin
 
 # Create your models here.
 
-class user(models.Model):
+class Register_user(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     #phone_munber=models.CharField(max_length=15,null=True,unique=True,blank=True)
     email=models.EmailField(null=True,unique=True)
@@ -26,7 +26,7 @@ class floors(models.Model):
         ('triple', 'Triple'),
     ]
 
-    user=models.ForeignKey(user,on_delete=models.CASCADE )
+    user=models.ForeignKey(Register_user,on_delete=models.CASCADE )
     floor_number=models.IntegerField(blank=True)
     room_number=models.IntegerField(blank=True)
     room_sharing = models.CharField(max_length=10, choices=room_share)
